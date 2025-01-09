@@ -81,9 +81,11 @@ for ioc_type, values in formatted_iocs.items():
     if values:  # Only output the IOC type if there are any values
         file_path = os.path.join(output_dir, f"{ioc_type}.txt")
         
-        # Write the IOC values to the file
+        # Write the IOC values in the new format
         with open(file_path, 'w') as f:
-            f.write(f"{ioc_type}:({', '.join(values)})\n")
+            ioc_list = ' OR '.join(values)  # Join the IOC values with ' OR '
+            # Write the IOC values in the desired format
+            f.write(f"FROM * | WHERE {ioc_type} IN ({ioc_list})\n")
 
         print(f"Saved {ioc_type} to {file_path}")
 
