@@ -1,6 +1,6 @@
 # ThreatFoxQuery
 
-This repository contains a Python script that queries the ThreatFox API to retrieve Indicators of Compromise (IOCs) from the past X days. The script processes the IOCs and saves them into separate text files for each IOC type, as well as a consolidated CSV file.
+This repository contains a Python script that queries the ThreatFox API to retrieve Indicators of Compromise (IOCs) from the past X days. The script processes the IOCs and converts the output to ES|QL queries and then saves them into separate text files for each IOC type, as well as a consolidated CSV file.
 
 **ThreatFoxQuery** is a Python-based tool that queries the ThreatFox API for Indicators of Compromise (IOCs) and saves them into separate files categorized by IOC type. The goal is that the output will be used as queries for Elastic.
 
