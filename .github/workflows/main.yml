@@ -1,10 +1,10 @@
 name: Weekly ThreatFox IOC Query
 
-# Run the workflow once a day at midnight GMT+1 (11:00 PM UTC)
+# Run the workflow once a week at midnight GMT+1 (11:00 PM UTC on Sundays)
 on:
   schedule:
-    - cron: "0 23 * * SUN"  # Run every day at  GMT+1 (11:00 PM UTC)
-  workflow_dispatch: # Allow manual trigger of the workflow
+    - cron: "0 23 * * SUN"  # Run every Sunday at 23:00 UTC (midnight GMT+1)
+  workflow_dispatch:  # Allow manual trigger of the workflow
 
 jobs:
   run-script:
