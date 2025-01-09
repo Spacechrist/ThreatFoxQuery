@@ -83,6 +83,6 @@ threatfox-iocs/
 ├── threatfox_query_all_types.py  # The Python script
 └── requirements.txt     # Python dependencies (requests, urllib3)
 ```
-Acknowledgments:
+### Acknowledgments:
 This is a modified version on ThreatFox Python tools and uses the ThreatFox API from abuse.ch for querying IOCs.
 https://github.com/abusech/ThreatFox/blob/main/threatfox_query_recent-iocs.py
