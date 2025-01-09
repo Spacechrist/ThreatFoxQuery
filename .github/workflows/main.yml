@@ -34,4 +34,5 @@ jobs:
           git config --global user.name "Spacechrist"  # Replace with your GitHub username
           git add .  # Add changes to staging
           git commit -m "Update ThreatFox IOCs" || echo "No changes to commit"  # Commit changes, if any
+          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git  # Use the GitHub token for authentication
           git push origin main  # Push changes to the main branch
