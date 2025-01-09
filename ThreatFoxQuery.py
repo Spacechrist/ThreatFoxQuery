@@ -83,7 +83,7 @@ for ioc_type, values in formatted_iocs.items():
         
         # Write the IOC values to the file
         with open(file_path, 'w') as f:
-            f.write(f"{ioc_type}:({' OR '.join(values)})\n")
+            f.write(f"{ioc_type}:({', '.join(values)})\n")
 
         print(f"Saved {ioc_type} to {file_path}")
 
