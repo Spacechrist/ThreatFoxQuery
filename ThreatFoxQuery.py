@@ -4,6 +4,7 @@ import json
 import sys
 import urllib3
 import os
+import csv
 
 # Check for required arguments (API key and number of days)
 if len(sys.argv) < 3:
@@ -83,3 +84,27 @@ for ioc_type, values in formatted_iocs.items():
             f.write(f"{ioc_type}:({' OR '.join(values)})\n")
 
         print(f"Saved {ioc_type} to {file_path}")
+
+# Create a CSV file for all IOCs
+csv_file_path = os.path.join(output_dir, "all_iocs.csv")
+with open(csv_file_path, 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile)
+    
+    # Write headers for the CSV file
+    writer.writerow(['file.hash.256', 'file.hash.md5', 'ip.port', 'url.domain', 'url.original'])
+    
+    # Determine the maximum length of any IOC type list to ensure we loop through all rows
+    max_length = max(len(values) for values in formatted_iocs.values())
+    
+    # Write each row of IOCs, padding with empty strings if necessary
+    for i in range(max_length):
+        row = [
+            formatted_iocs["file.hash.256"][i] if i < len(formatted_iocs["file.hash.256"]) else '',
+            formatted_iocs["file.hash.md5"][i] if i < len(formatted_iocs["file.hash.md5"]) else '',
+            formatted_iocs["ip.port"][i] if i < len(formatted_iocs["ip.port"]) else '',
+            formatted_iocs["url.domain"][i] if i < len(formatted_iocs["url.domain"]) else '',
+            formatted_iocs["url.original"][i] if i < len(formatted_iocs["url.original"]) else ''
+        ]
+        writer.writerow(row)
+
+print(f"All IOCs have been written to {csv_file_path}")
