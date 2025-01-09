@@ -26,7 +26,7 @@ jobs:
 
       - name: Run the ThreatFox IOC Query script
         run: |
-          python3 threatfox_query_all_types.py ${{ secrets.THREATFOX_API_KEY }} 7  # Replace API_KEY with the secret in your GitHub repo
+          python3 ThreatFoxQuery.py ${{ secrets.THREATFOX_API_KEY }} 7  # Replace API_KEY with the secret in your GitHub repo
           
       - name: Commit and push new IOC data
         run: |
