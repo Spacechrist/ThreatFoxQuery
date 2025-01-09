@@ -1,18 +1,16 @@
 # ThreatFoxQuery
 
-All the results are stored under threatfox_iocs,
-https://github.com/Spacechrist/ThreatFoxQuery/tree/main/threatfox_iocs
-
-See below if you want to run it yourself.
+This repository contains a Python script that queries the ThreatFox API to retrieve Indicators of Compromise (IOCs) from the past X days. The script processes the IOCs and saves them into separate text files for each IOC type, as well as a consolidated CSV file.
 
 **ThreatFoxQuery** is a Python-based tool that queries the ThreatFox API for Indicators of Compromise (IOCs) and saves them into separate files categorized by IOC type. The goal is that the output will be used as queries for Elastic.
 
 The script supports querying for various types of IOCs such as `url`, `sha256_hash`, `md5_hash`, `ip:port`, and `domain`.
 
-## Features:
-- Query multiple IOC types (URL, SHA256 Hash, MD5 Hash, IP:Port, Domain) for a given period (e.g., the last 7 days).
-- Saves each IOC type in separate text files.
-- Each IOC value is enclosed in double quotes for consistency.
+
+## Features
+- Queries the ThreatFox API for IOCs of different types (SHA256 hash, MD5 hash, IP:Port, domain, and URL).
+- Saves each IOC type to a separate text file.
+- Saves all IOCs in a CSV file with separate columns for each IOC type.
 
 ## Prerequisites:
 - Python 3.x (You can download it from [python.org](https://www.python.org/downloads/)).
@@ -82,12 +80,34 @@ This tool is open-source and available under the MIT License. Feel free to use, 
 ### Final Structure of the Repository:
 
 ```
-threatfox-iocs/
+/ThreatFoxQuery
 │
-├── README.md            # This file
-├── threatfox_query_all_types.py  # The Python script
-└── requirements.txt     # Python dependencies (requests, urllib3)
+├── /threatfox_iocs/                   # Directory to store IOC output files
+│   ├── file.hash.256.txt              # IOC type: SHA256 hashes
+│   ├── file.hash.md5.txt              # IOC type: MD5 hashes
+│   ├── ip.port.txt                   # IOC type: IP:Port pairs
+│   ├── url.domain.txt                # IOC type: domain names
+│   ├── url.original.txt              # IOC type: original URLs
+│   └── all_iocs.csv                  # CSV file with all IOCs in separate columns
+│
+├── threatfox_query_all_types.py       # Python script to query ThreatFox API and save IOCs
+├── .github/
+│   └── workflows/
+│       └── main.yml                  # GitHub Actions workflow configuration file
+├── README.md                         # Repository description and usage guide
+└── requirements.txt                  # Dependencies (if any)
 ```
+
+
+### Automate with GitHub Actions
+
+If you want to run the script automatically, you can set up a GitHub Actions workflow to run the script daily:
+
+1. The GitHub Actions workflow file (`.github/workflows/main.yml`) is already included in this repository.
+2. The workflow will run the script every day at midnight (GMT+1) and commit the results to the repository.
+
+
+
 ### Acknowledgments:
 This is a modified version on ThreatFox Python tools and uses the ThreatFox API from abuse.ch for querying IOCs.
 https://github.com/abusech/ThreatFox/blob/main/threatfox_query_recent-iocs.py
