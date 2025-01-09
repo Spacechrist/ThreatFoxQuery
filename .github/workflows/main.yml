@@ -30,8 +30,8 @@ jobs:
           
       - name: Commit and push new IOC data
         run: |
-          git config --global user.email "your-email@example.com"  # Replace with your GitHub email
-          git config --global user.name "Your Name"  # Replace with your GitHub username
+          git config --global user.email "christianwallins@outlook.com"  # Replace with your GitHub email
+          git config --global user.name "Spacechrist"  # Replace with your GitHub username
           git add .  # Add changes to staging
           git commit -m "Update ThreatFox IOCs" || echo "No changes to commit"  # Commit changes, if any
           git push origin main  # Push changes to the main branch
