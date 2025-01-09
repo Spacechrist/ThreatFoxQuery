@@ -83,7 +83,7 @@ for ioc_type, values in formatted_iocs.items():
         
         # Write the IOC values in the new format
         with open(file_path, 'w') as f:
-            ioc_list = ' OR '.join(values)  # Join the IOC values with ' OR '
+            ioc_list = ', '.join(values)  # Join the IOC values with ' OR '
             # Write the IOC values in the desired format
             f.write(f"FROM * | WHERE {ioc_type} IN ({ioc_list})\n")
 
