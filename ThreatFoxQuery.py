@@ -46,7 +46,7 @@ if iocs["query_status"] != "ok":
 
 # Process the IOCs and store the result by IOC type
 formatted_iocs = {
-    "file.hash.256": [],
+    "file.hash.sha256": [],
     "file.hash.md5": [],
     "destination.ip": [],  # Changed to destination.ip to match desired output
     "url.domain": [],
@@ -60,7 +60,7 @@ for ioc in iocs["data"]:
 
     # Append the IOC values to the appropriate list based on the IOC type
     if ioc_type == "sha256_hash":
-        formatted_iocs["file.hash.256"].append(f'"{ioc_value}"')
+        formatted_iocs["file.hash.sha256"].append(f'"{ioc_value}"')
     elif ioc_type == "md5_hash":
         formatted_iocs["file.hash.md5"].append(f'"{ioc_value}"')
     elif ioc_type == "ip:port":
@@ -95,7 +95,7 @@ with open(csv_file_path, 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     
     # Write headers for the CSV file
-    writer.writerow(['file.hash.256', 'file.hash.md5', 'destination.ip', 'url.domain', 'url.original'])
+    writer.writerow(['file.hash.sha256', 'file.hash.md5', 'destination.ip', 'url.domain', 'url.original'])
     
     # Determine the maximum length of any IOC type list to ensure we loop through all rows
     max_length = max(len(values) for values in formatted_iocs.values())
@@ -103,7 +103,7 @@ with open(csv_file_path, 'w', newline='') as csvfile:
     # Write each row of IOCs, padding with empty strings if necessary
     for i in range(max_length):
         row = [
-            formatted_iocs["file.hash.256"][i] if i < len(formatted_iocs["file.hash.256"]) else '',
+            formatted_iocs["file.hash.sha256"][i] if i < len(formatted_iocs["file.hash.sha256"]) else '',
             formatted_iocs["file.hash.md5"][i] if i < len(formatted_iocs["file.hash.md5"]) else '',
             formatted_iocs["destination.ip"][i] if i < len(formatted_iocs["destination.ip"]) else '',  # Updated to destination.ip
             formatted_iocs["url.domain"][i] if i < len(formatted_iocs["url.domain"]) else '',
