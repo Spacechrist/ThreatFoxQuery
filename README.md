@@ -1,5 +1,10 @@
 # ThreatFoxQuery
 
+All the results are stored under threatfox_iocs,
+https://github.com/Spacechrist/ThreatFoxQuery/tree/main/threatfox_iocs
+
+See below if you want to run it yourself.
+
 **ThreatFoxQuery** is a Python-based tool that queries the ThreatFox API for Indicators of Compromise (IOCs) and saves them into separate files categorized by IOC type. The goal is that the output will be used as queries for Elastic.
 
 The script supports querying for various types of IOCs such as `url`, `sha256_hash`, `md5_hash`, `ip:port`, and `domain`.
