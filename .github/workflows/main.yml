@@ -1,9 +1,9 @@
-name: Daily ThreatFox IOC Query
+name: Weekly ThreatFox IOC Query
 
 # Run the workflow once a day at midnight GMT+1 (11:00 PM UTC)
 on:
   schedule:
-    - cron: "0 13 * * *"  # Run every day at  GMT+1 (11:00 PM UTC)
+    - cron: "0 23 * * *"  # Run every day at  GMT+1 (11:00 PM UTC)
   workflow_dispatch: # Allow manual trigger of the workflow
 
 jobs:
