@@ -1,4 +1,4 @@
-file.hash.256,file.hash.md5,destination.ip,url.domain,url.original
+file.hash.sha256,file.hash.md5,destination.ip,url.domain,url.original
 """7d54679530cec59ef4c71f059c3b6da8f654e2a316fa4689319db0ab35572880""","""931396d6332709956237cf76ee246b01""","""34.126.154.165""","""clamfluffys.click""","""https://exodvs.com/js.php"""
 """8975061562d23fe044b62d89324687e6f03203062c6c026797795df247f4be30""","""08f630cc1005bad662dcdd478fff28d3""","""192.95.19.98""","""okta.mllcrosoft.com""","""https://exodvs.com/4e1q.js"""
 """e3dbee51df9dd78d9b3d643f7d7f9c7cb84b88819647d436f1a595d7c1a51e87""","""c5c47f7a17ef4533d1c162042aa0313b""","""192.95.19.98""","""csp.mllcrosoft.com""","""https://pub-9c4ec7f3f95c448b85e464d2b533aac1.r2.dev/CAptcha-verify-Approvals-system.html"""
