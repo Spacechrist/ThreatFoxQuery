@@ -72,9 +72,6 @@ url.original:("http://example.com", "https://malicious.site")
 4. `ip.port.txt` - Contains all IP:Port combinations.
 5. `url.domain.txt` - Contains all domains.
 
-## License:
-This tool is open-source and available under the MIT License. Feel free to use, modify, and distribute it!
-
 ---
 
 ### Final Structure of the Repository:
@@ -101,13 +98,18 @@ This tool is open-source and available under the MIT License. Feel free to use, 
 
 ### Automate with GitHub Actions
 
-If you want to run the script automatically, you can set up a GitHub Actions workflow to run the script daily:
+If you want to run the script automatically, you can set up a GitHub Actions workflow to run the script weekly:
 
 1. The GitHub Actions workflow file (`.github/workflows/main.yml`) is already included in this repository.
-2. The workflow will run the script every day at midnight (GMT+1) and commit the results to the repository.
+2. The workflow will run the script every sunday at midnight (GMT+1) and commit the results to the repository.
 
 
 
 ### Acknowledgments:
 This is a modified version on ThreatFox Python tools and uses the ThreatFox API from abuse.ch for querying IOCs.
 https://github.com/abusech/ThreatFox/blob/main/threatfox_query_recent-iocs.py
+
+
+
+## License:
+This tool is open-source and available under the MIT License. Feel free to use, modify, and distribute it!
