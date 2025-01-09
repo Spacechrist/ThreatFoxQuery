@@ -1,0 +1,37 @@
+name: Daily ThreatFox IOC Query
+
+# Run the workflow once a day at midnight GMT+1 (11:00 PM UTC)
+on:
+  schedule:
+    - cron: "0 13 * * *"  # Run every day at  GMT+1 (11:00 PM UTC)
+  workflow_dispatch: # Allow manual trigger of the workflow
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout the code from the repository
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # Install dependencies listed in the requirements.txt
+
+      - name: Run the ThreatFox IOC Query script
+        run: |
+          python3 threatfox_query_all_types.py ${{ secrets.THREATFOX_API_KEY }} 7  # Replace API_KEY with the secret in your GitHub repo
+          
+      - name: Commit and push new IOC data
+        run: |
+          git config --global user.email "your-email@example.com"  # Replace with your GitHub email
+          git config --global user.name "Your Name"  # Replace with your GitHub username
+          git add .  # Add changes to staging
+          git commit -m "Update ThreatFox IOCs" || echo "No changes to commit"  # Commit changes, if any
+          git push origin main  # Push changes to the main branch
